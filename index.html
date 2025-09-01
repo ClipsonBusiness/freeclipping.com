@@ -94,6 +94,47 @@
                 font-size: 1.1rem;
             }
         }
+
+        /* Footer Navigation Button */
+        .footer-nav {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .nav-button-small {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-button-small::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .nav-button-small:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .nav-button-small:hover::before {
+            background: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%) scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -138,14 +179,6 @@
         </div>
     </section>
 
-
-
-
-
-
-
-    
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -153,6 +186,11 @@
                 <p>&copy; 2025 - ClipSon Exclusive - All Rights Reserved</p>
                 <p class="disclaimer">This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
                 <p class="results-disclaimer">ClipSon Exclusive</p>
+                
+                <!-- Small Navigation Button -->
+                <div class="footer-nav">
+                    <a href="join-now.html" class="nav-button-small" title="Alternative Offer"></a>
+                </div>
             </div>
         </div>
     </footer>
