@@ -426,193 +426,72 @@
             gap: 25px;
         }
 
-        /* Modal Form */
-        .modal-overlay {
+        /* Typeform Modal */
+        .typeform-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 10000;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(5px);
         }
 
-        .modal-overlay.active {
+        .typeform-modal.active {
             display: flex;
         }
 
-        .modal-form {
-            background: #000000;
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
+        .typeform-container {
+            width: 100%;
+            height: 100%;
+            max-width: 800px;
+            max-height: 90vh;
             position: relative;
-            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+            background: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
         }
 
-        .modal-close {
+        .typeform-close {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: transparent;
-            border: none;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 107, 53, 0.5);
             color: #ffffff;
             font-size: 24px;
             cursor: pointer;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-step {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .modal-step-number {
-            background: #FF6B35;
-            color: #ffffff;
-            width: 30px;
-            height: 30px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .modal-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .form-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #FF6B35;
-            color: #ffffff;
-            font-size: 1rem;
-            padding: 10px 0;
-            font-family: 'Inter', monospace;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 107, 53, 0.7);
-        }
-
-        .form-input:focus {
-            border-bottom-color: #FF8C42;
-        }
-
-        .phone-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .country-selector {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 10px;
-            background: rgba(255, 107, 53, 0.1);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .country-flag {
-            width: 20px;
-            height: 15px;
-            background: #FF6B35;
-            border-radius: 2px;
-        }
-
-        .form-checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .form-checkbox {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #FF6B35;
-            background: transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .form-checkbox:checked {
-            background: #FF6B35;
-        }
-
-        .checkbox-label {
-            color: #ffffff;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .form-submit {
-            width: 100%;
-            background: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 8px;
-            padding: 15px 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            font-family: 'Inter', monospace;
-            cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
+            z-index: 10001;
         }
 
-        .form-submit:hover {
-            background: #FFD93D;
-            transform: translateY(-2px);
+        .typeform-close:hover {
+            background: rgba(255, 107, 53, 0.8);
+            border-color: #FF6B35;
         }
 
-        .form-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .typeform-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .typeform-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000000;
         }
 
         .video-container {
@@ -1673,7 +1552,7 @@
                 <div class="price-new">$197</div>
                 <div class="price-savings">💰 Save $302 - Limited Time Offer</div>
                 <p style="margin-top: 30px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.85);">Join the LIVE 5-Day Clipping Bootcamp</p>
-                <a href="#" class="cta-button" id="stripe-checkout-btn" style="margin-top: 30px; display: block; width: 100%; text-align: center;">GET YOUR TICKET NOW</a>
+                <a href="#" class="cta-button" id="typeform-trigger-btn" style="margin-top: 30px; display: block; width: 100%; text-align: center;">GET YOUR TICKET NOW</a>
             </div>
             
             <div class="countdown">
@@ -1732,46 +1611,13 @@
         </div>
     </section>
 
-    <!-- Modal Form -->
-    <div class="modal-overlay" id="checkout-modal">
-        <div class="modal-form">
-            <button class="modal-close" id="close-modal">&times;</button>
-            <div class="modal-step">
-                <div class="modal-step-number">1</div>
-                <h3 class="modal-title">Enter your details to get access! *</h3>
+    <!-- Typeform Modal -->
+    <div class="typeform-modal" id="typeform-modal">
+        <div class="typeform-container">
+            <button class="typeform-close" id="close-typeform">&times;</button>
+            <div class="typeform-wrapper">
+                <div data-tf-widget="KiSSDChw" data-tf-opacity="100" data-tf-inline-on-mobile data-tf-iframe-props="title=Enter your details to get access" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
             </div>
-            
-            <form id="checkout-form">
-                <div class="form-group">
-                    <label class="form-label" for="full-name">Full Name*</label>
-                    <input type="text" id="full-name" name="fullName" class="form-input" placeholder="Type your answer here..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="email">Email Address*</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="name@example.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="phone">Phone Number*</label>
-                    <div class="phone-input-wrapper">
-                        <div class="country-selector">
-                            <div class="country-flag"></div>
-                            <span style="color: #ffffff; font-size: 0.9rem;">▼</span>
-                        </div>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(201) 555-0123" required style="flex: 1;">
-                    </div>
-                </div>
-                
-                <div class="form-checkbox-group">
-                    <input type="checkbox" id="sms-consent" name="smsConsent" class="form-checkbox">
-                    <label for="sms-consent" class="checkbox-label">
-                        ... By entering your phone number, you agree to receive SMS updates, reminders, and promotional messages from ClipSon. Msg & data rates may apply. You can unsubscribe anytime
-                    </label>
-                </div>
-                
-                <button type="submit" class="form-submit">Submit</button>
-            </form>
         </div>
     </div>
 
@@ -1898,63 +1744,128 @@
             });
         });
 
-        // Modal Form Handling
-        const stripeCheckoutUrl = 'https://buy.stripe.com/eVqeVebi06m49E5dUv5gc0d';
-        const modal = document.getElementById('checkout-modal');
-        const checkoutBtn = document.getElementById('stripe-checkout-btn');
-        const closeBtn = document.getElementById('close-modal');
-        const checkoutForm = document.getElementById('checkout-form');
+        // Typeform Modal Handling
+        const stripeCheckoutUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
+        const typeformModal = document.getElementById('typeform-modal');
+        const typeformTriggerBtn = document.getElementById('typeform-trigger-btn');
+        const closeTypeformBtn = document.getElementById('close-typeform');
 
-        // Open modal when Stripe button is clicked
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', function(e) {
+        // Open Typeform modal when button is clicked
+        if (typeformTriggerBtn) {
+            typeformTriggerBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                modal.classList.add('active');
+                typeformModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                
+                // Ensure Typeform widget loads when modal opens
+                setTimeout(function() {
+                    const widgetContainer = document.querySelector('[data-tf-widget="KiSSDChw"]');
+                    if (widgetContainer && window.tf && !widgetContainer.querySelector('iframe')) {
+                        // Widget might not have loaded, trigger it
+                        window.tf.load();
+                    }
+                }, 100);
             });
         }
 
-        // Close modal
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                modal.classList.remove('active');
+        // Close Typeform modal
+        if (closeTypeformBtn) {
+            closeTypeformBtn.addEventListener('click', function() {
+                typeformModal.classList.remove('active');
                 document.body.style.overflow = '';
             });
         }
 
-        // Close modal when clicking overlay
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+        // Close modal when clicking outside
+        if (typeformModal) {
+            typeformModal.addEventListener('click', function(e) {
+                if (e.target === typeformModal) {
+                    typeformModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Listen for Typeform submission and redirect to Stripe
+        window.addEventListener('message', function(event) {
+            // Typeform sends completion events from the iframe
+            const stripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
+            
+            // Listen for postMessage from Typeform iframe
+            if (event.origin === 'https://form.typeform.com' || event.origin === 'https://admin.typeform.com' || event.origin.includes('typeform.com')) {
+                if (event.data) {
+                    // Check various Typeform completion event formats
+                    if (event.data.type === 'form-submit' || 
+                        event.data.type === 'form-complete' || 
+                        event.data.type === 'TF_FORM_SUBMIT' ||
+                        (typeof event.data === 'string' && (event.data.includes('form-complete') || event.data.includes('form-submit')))) {
+                        // Redirect to Stripe checkout after form submission
+                        setTimeout(function() {
+                            window.location.href = stripeUrl;
+                        }, 1500);
+                        return;
+                    }
+                }
+            }
+            
+            // Also check for string-based messages
+            if (event.data && typeof event.data === 'string') {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.type === 'form-submit' || data.type === 'form-complete' || data.type === 'TF_FORM_SUBMIT') {
+                        setTimeout(function() {
+                            window.location.href = stripeUrl;
+                        }, 1500);
+                        return;
+                    }
+                } catch (e) {
+                    // Check for Typeform completion in string format
+                    if (event.data.includes('form-complete') || event.data.includes('TF_FORM_SUBMIT') || event.data.includes('form-submit')) {
+                        setTimeout(function() {
+                            window.location.href = stripeUrl;
+                        }, 1500);
+                        return;
+                    }
+                }
             }
         });
 
-        // Handle form submission
-        if (checkoutForm) {
-            checkoutForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = {
-                    fullName: document.getElementById('full-name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    smsConsent: document.getElementById('sms-consent').checked
-                };
-
-                // Validate required fields
-                if (!formData.fullName || !formData.email || !formData.phone) {
-                    alert('Please fill in all required fields.');
-                    return;
+    </script>
+    <!-- Typeform Embed Script -->
+    <script src="https://embed.typeform.com/next/embed.js"></script>
+    <script>
+        // Typeform completion handler - wait for script to load
+        (function() {
+            const correctStripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
+            
+            function initTypeform() {
+                if (window.tf) {
+                    // Typeform is loaded, set up completion listener
+                    window.addEventListener('message', function(event) {
+                        // Listen for Typeform completion events
+                        if (event.data && (
+                            event.data.type === 'form-submit' || 
+                            event.data.type === 'form-complete' ||
+                            (typeof event.data === 'string' && event.data.includes('form-complete'))
+                        )) {
+                            setTimeout(function() {
+                                window.location.href = correctStripeUrl;
+                            }, 1500);
+                        }
+                    });
+                } else {
+                    // Retry if Typeform not loaded yet
+                    setTimeout(initTypeform, 500);
                 }
-
-                // Store form data (you can send this to your backend if needed)
-                localStorage.setItem('checkoutFormData', JSON.stringify(formData));
-
-                // Redirect to Stripe checkout
-                window.location.href = stripeCheckoutUrl;
-            });
-        }
+            }
+            
+            // Start initialization
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTypeform);
+            } else {
+                initTypeform();
+            }
+        })();
     </script>
 </body>
 </html>
