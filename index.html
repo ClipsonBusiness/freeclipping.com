@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clipping Bootcamp - Make Your First Profitable Clipping Page in 5 Days</title>
+    <title>Clipping Bootcamp - Make Your First Profitable Clipping Page in 4 Days</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -619,36 +619,19 @@
             width: 100%;
             max-width: 900px;
             margin: 0 auto 40px;
-            aspect-ratio: 16 / 9;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
             position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container .wistia_responsive_padding {
+            border-radius: 12px;
             overflow: hidden;
         }
 
-        .video-container::before {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .video-container::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 25px solid rgba(255, 255, 255, 0.9);
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent;
-            margin-left: 5px;
+        .video-container iframe {
+            border-radius: 12px;
         }
 
         .cta-button {
@@ -1382,6 +1365,7 @@
             }
         }
     </style>
+    <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 </head>
 <body>
     <!-- Top Header Bar -->
@@ -1421,10 +1405,16 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page in Just<br><span class="highlight-days">5 Days</span> — <span class="highlight-live">LIVE</span>, <span class="highlight-step">Step-by-Step</span></h1>
+                <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page in Just<br><span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>, <span class="highlight-step">Step-by-Step</span></h1>
                 <p class="hero-subtitle">Learn how to <span class="highlight-master">master</span> <span class="highlight-clipping">clipping</span></p>
                 
-                <div class="video-container"></div>
+                <div class="video-container">
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%">
+                            <iframe src="https://fast.wistia.net/embed/iframe/hqlvau9nq4?videoFoam=true" title="Clipping Bootcamp Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="features">
                     <div class="feature-item">
@@ -1628,7 +1618,7 @@
             <div class="info-grid">
                 <div class="info-card">
                     <h3>WHAT</h3>
-                    <p>A <span class="highlight-orange">live 5-Day</span> Clipping Bootcamp where you'll follow along with me building <span class="highlight-yellow">profitable clipping pages</span> from scratch in <span class="highlight-orange">real time</span>… and copy the <span class="highlight-yellow">exact system step-by-step</span>.</p>
+                    <p>A <span class="highlight-orange">live 4-Day</span> Clipping Bootcamp covering exactly how you <span class="highlight-yellow">pick an opportunity</span>, <span class="highlight-orange">build viral clips</span>, <span class="highlight-yellow">setup professional pages</span>, <span class="highlight-orange">target T1 audience</span> and lastly <span class="highlight-yellow">get paid for the views</span> you generate <span class="highlight-orange">on autopilot</span>.</p>
                 </div>
                 <div class="info-card">
                     <h3>WHERE</h3>
@@ -1636,9 +1626,9 @@
                 </div>
                 <div class="info-card">
                     <h3>WHEN</h3>
-                    <p>Runs for <span class="highlight-orange">5 days</span> in a row. Each session is <span class="highlight-yellow">60–90 minutes</span> (plus optional Q&A / VIP breakouts).</p>
-                    <p style="margin-top: 15px;"><strong>Dates: <span class="highlight-orange">February 2nd - 6th</span></strong></p>
-                    <p><strong>Time: <span class="highlight-yellow">Everyday Starting @7PM EST</span></strong></p>
+                    <p>Runs for <span class="highlight-orange">4 days</span> in a row. Each session is <span class="highlight-yellow">60–90 minutes</span> (plus optional Q&A / VIP breakouts).</p>
+                    <p style="margin-top: 15px;"><strong>Dates: <span class="highlight-orange">February 5th - 9th</span></strong></p>
+                    <p><strong>Time: <span class="highlight-yellow">Everyday Starting @1PM EST</span></strong></p>
                 </div>
             </div>
         </div>
@@ -1651,52 +1641,46 @@
             <div class="agenda-grid">
                 <div class="agenda-day">
                     <div class="day-number">01</div>
-                    <h3>Day 1: The Opportunity</h3>
-                    <p>Learn why <span class="highlight-orange">clipping pages</span> are the <span class="highlight-yellow">simplest, fastest business</span> to start in 2026.</p>
+                    <h3>Day 1: The Future of Clipping</h3>
+                    <p>Discover why you're still in the <span class="highlight-orange">0.01%</span> that knows you can <span class="highlight-yellow">get paid for your views</span> — and why this opportunity won't last forever.</p>
                     <ul>
-                        <li>Why this is <span class="highlight-yellow">superior</span> to ecom, trading, and every other online business</li>
-                        <li>How to position yourself for <span class="highlight-orange">success</span>, even if you have <span class="highlight-yellow">no results</span></li>
-                        <li>Why businesses are <span class="highlight-orange">desperate</span> for quality clipping content</li>
+                        <li>Why this opportunity <span class="highlight-yellow">won't be available</span> for ordinary people forever</li>
+                        <li>How the <span class="highlight-orange">clippers space</span> is getting bigger by the day</li>
+                        <li>Understanding the <span class="highlight-yellow">increasing competition</span> and why you need to act now</li>
+                        <li>Why you're still early to this <span class="highlight-orange">lucrative opportunity</span></li>
                     </ul>
                 </div>
                 <div class="agenda-day">
                     <div class="day-number">02</div>
-                    <h3>Day 2: Your First Page</h3>
-                    <p>Join me for the <span class="highlight-orange">live premiere</span> of building your first <span class="highlight-yellow">profitable clipping page</span>.</p>
+                    <h3>Day 2: What Makes a Viral Clip</h3>
+                    <p>Learn why the <span class="highlight-orange">same people make money</span> in every campaign they join, while others join all campaigns but still make <span class="highlight-yellow">$0 cash</span>.</p>
                     <ul>
-                        <li><span class="highlight-yellow">Word-for-word templates</span> that are <span class="highlight-orange">proven to convert</span></li>
-                        <li>The <span class="highlight-orange">"Irresistible Offer"</span> framework that makes them want to click</li>
-                        <li>Setting up pages like a <span class="highlight-yellow">pro</span>, even if you're <span class="highlight-orange">inexperienced</span></li>
+                        <li>What <span class="highlight-yellow">actually makes a clip go viral</span></li>
+                        <li>Why successful clippers <span class="highlight-orange">consistently profit</span> from every campaign</li>
+                        <li>The difference between <span class="highlight-yellow">winners and complainers</span> in clipping</li>
+                        <li>How to avoid being the person who <span class="highlight-orange">blames everyone</span> instead of improving</li>
                     </ul>
                 </div>
                 <div class="agenda-day">
                     <div class="day-number">03</div>
-                    <h3>Day 3: Content Creation</h3>
-                    <p>Learn how to create <span class="highlight-orange">high-converting</span> clipping content that <span class="highlight-yellow">drives traffic</span>.</p>
+                    <h3>Day 3: Professional Pages & Algorithm Secrets</h3>
+                    <p>Learn how to set up <span class="highlight-orange">social media pages for success</span> and discover the <span class="highlight-yellow">algorithm secrets</span> that drive 100M+ views a month.</p>
                     <ul>
-                        <li>The <span class="highlight-yellow">exact content formulas</span> that work</li>
-                        <li>How to <span class="highlight-orange">source and optimize</span> clips</li>
-                        <li>Creating content that goes <span class="highlight-yellow">viral</span></li>
+                        <li>Setting up <span class="highlight-yellow">professional social media pages</span> that convert</li>
+                        <li>Mastering <span class="highlight-orange">viral format editing</span> techniques</li>
+                        <li>The <span class="highlight-yellow">best algorithm secrets</span> that drive massive views</li>
+                        <li>How to consistently generate <span class="highlight-orange">100M+ views per month</span></li>
                     </ul>
                 </div>
                 <div class="agenda-day">
                     <div class="day-number">04</div>
-                    <h3>Day 4: Traffic & Scaling</h3>
-                    <p>Discover how to drive traffic to your pages and scale your income.</p>
+                    <h3>Day 4: Scale on Autopilot</h3>
+                    <p>Scale yourself out as a clipper to have clips on <span class="highlight-orange">autopilot generating millions of views</span> without you being the editor making the clips.</p>
                     <ul>
-                        <li>Free and paid traffic strategies</li>
-                        <li>How to optimize for conversions</li>
-                        <li>Scaling from one page to multiple income streams</li>
-                    </ul>
-                </div>
-                <div class="agenda-day">
-                    <div class="day-number">05</div>
-                    <h3>Day 5: Automation & Systems</h3>
-                    <p>Build systems that allow your pages to run on autopilot.</p>
-                    <ul>
-                        <li>Automation tools and strategies</li>
-                        <li>Building a sustainable business model</li>
-                        <li>Next steps to scale your income</li>
+                        <li>The <span class="highlight-yellow">exact systems</span> that allow scaling multiple pages at once</li>
+                        <li>How to generate <span class="highlight-orange">millions of views</span> without constant editing</li>
+                        <li>Building systems so you're <span class="highlight-yellow">not doing the heavy lifting</span> all the time</li>
+                        <li>Scaling your clipping business <span class="highlight-orange">without being in the field</span> constantly</li>
                     </ul>
                 </div>
             </div>
@@ -1717,7 +1701,7 @@
                 <div class="spots-availability">
                     <strong>100 Possible Spots</strong> • Only <strong>43 Left</strong> • Spots Fill Quick
                 </div>
-                <p style="margin-top: 30px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.85);">Join the LIVE 5-Day Clipping Bootcamp</p>
+                <p style="margin-top: 30px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.85);">Join the LIVE 4-Day Clipping Bootcamp</p>
                 <a href="#" class="cta-button" id="typeform-trigger-btn" style="margin-top: 30px; display: block; width: 100%; text-align: center;">GET YOUR TICKET NOW</a>
             </div>
             
@@ -1757,7 +1741,7 @@
 
             <div class="faq-item">
                 <div class="faq-question">How much time do I need to commit?</div>
-                <div class="faq-answer">Each live session is 60-90 minutes per day for 5 days. You can also watch replays if you can't make it live. Plus, you'll have access to the community for ongoing support.</div>
+                <div class="faq-answer">Each live session is 60-90 minutes per day for 4 days. You can also watch replays if you can't make it live. Plus, you'll have access to the community for ongoing support.</div>
             </div>
 
             <div class="faq-item">
@@ -1959,7 +1943,7 @@
                     // Restart from beginning after all shown
                     notificationIndex = 0;
                 }
-            }, 15000); // Show new notification every 15 seconds
+            }, 30000); // Show new notification every 30 seconds
         });
 
         // Smooth scroll for anchor links
