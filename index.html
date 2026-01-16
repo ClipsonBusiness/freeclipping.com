@@ -171,7 +171,7 @@
         .hero {
             background: #000000;
             color: white;
-            padding: 100px 20px 80px;
+            padding: 40px 20px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -196,9 +196,10 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.2rem, 5.5vw, 4rem);
             font-weight: 900;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            margin-top: 0;
             line-height: 1.2;
             letter-spacing: -0.02em;
             white-space: normal;
@@ -253,10 +254,11 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 40px;
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+            margin-bottom: 20px;
+            margin-top: 0;
             opacity: 0.9;
-            font-weight: 400;
+            font-weight: 500;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -632,7 +634,7 @@
         .video-container {
             width: 100%;
             max-width: 900px;
-            margin: 0 auto 40px;
+            margin: 20px auto 30px;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
@@ -650,10 +652,10 @@
 
         .urgency-text {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: #FF6B35;
-            margin: -20px auto 30px;
+            margin: 10px auto 20px;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
@@ -1321,7 +1323,7 @@
             }
 
             .hero {
-                padding: 60px 5px 50px;
+                padding: 30px 5px 40px;
             }
 
             .hero .container {
@@ -1329,12 +1331,14 @@
             }
 
             .hero h1 {
-                font-size: clamp(1.2rem, 5vw, 1.8rem);
+                font-size: clamp(1.4rem, 5.5vw, 2.2rem);
                 line-height: 1.1;
                 white-space: normal;
                 word-break: keep-all;
                 max-width: 100%;
                 overflow-wrap: break-word;
+                margin-bottom: 10px;
+                margin-top: 0;
             }
 
             .hero h1 br {
@@ -1350,17 +1354,23 @@
                 display: inline-block;
             }
 
+            .hero-subtitle {
+                font-size: clamp(1.1rem, 3vw, 1.4rem);
+                margin-bottom: 15px;
+                margin-top: 0;
+            }
+
             .video-container {
                 max-width: 100%;
-                margin: 0 auto 25px;
+                margin: 15px auto 20px;
                 width: calc(100vw - 4px);
                 border-radius: 8px;
                 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
             }
 
             .urgency-text {
-                font-size: 1rem;
-                margin: -15px auto 25px;
+                font-size: 1.1rem;
+                margin: 8px auto 18px;
                 letter-spacing: 0.5px;
             }
 
@@ -1377,15 +1387,28 @@
                 font-size: 1rem;
                 padding: 16px 35px;
                 display: block;
-                margin: 12px 0;
+                margin: 25px auto 0;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
             }
 
             .features {
-                gap: 12px;
+                gap: 10px;
+                flex-wrap: nowrap;
+                margin: 30px 0 25px;
+                justify-content: center;
             }
 
             .feature-item {
-                padding: 14px 20px;
+                padding: 12px 16px;
+                flex: 0 1 auto;
+                min-width: 0;
+            }
+
+            .feature-item h3 {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
             }
 
             .countdown-timer {
