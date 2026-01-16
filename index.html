@@ -57,6 +57,12 @@
             padding: 0 20px;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+        }
+
         /* Top Header Bar */
         .top-header {
             background: rgba(255, 255, 255, 0.05);
@@ -193,8 +199,16 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
             margin-bottom: 30px;
-            line-height: 1.1;
+            line-height: 1.2;
             letter-spacing: -0.02em;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .hero h1 br {
+            display: block;
+            content: "";
+            margin: 0;
         }
 
         .hero h1 .highlight-first {
@@ -632,6 +646,30 @@
 
         .video-container iframe {
             border-radius: 12px;
+        }
+
+        .urgency-text {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #FF6B35;
+            margin: -20px auto 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            animation: pulse-urgency 2s ease-in-out infinite;
+            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.5);
+        }
+
+        @keyframes pulse-urgency {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.85;
+                transform: scale(1.02);
+            }
         }
 
         .cta-button {
@@ -1283,7 +1321,35 @@
             }
 
             .hero {
-                padding: 80px 20px 60px;
+                padding: 80px 10px 60px;
+            }
+
+            .hero .container {
+                padding: 0 5px;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+                line-height: 1.25;
+                white-space: normal;
+            }
+
+            .hero h1 br {
+                display: block;
+            }
+
+            .video-container {
+                max-width: 100%;
+                margin: 0 auto 30px;
+                width: calc(100vw - 10px);
+                border-radius: 8px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            }
+
+            .urgency-text {
+                font-size: 1rem;
+                margin: -15px auto 25px;
+                letter-spacing: 0.5px;
             }
 
             .opportunity,
@@ -1405,7 +1471,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page in Just<br><span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>, <span class="highlight-step">Step-by-Step</span></h1>
+                <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page<br>in Just <span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>,<br><span class="highlight-step">Step-by-Step</span></h1>
                 <p class="hero-subtitle">Learn how to <span class="highlight-master">master</span> <span class="highlight-clipping">clipping</span></p>
                 
                 <div class="video-container">
@@ -1415,6 +1481,8 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="urgency-text">🚨Few Spots Left🚨</div>
                 
                 <div class="features">
                     <div class="feature-item">
@@ -1627,7 +1695,7 @@
                 <div class="info-card">
                     <h3>WHEN</h3>
                     <p>Runs for <span class="highlight-orange">4 days</span> in a row. Each session is <span class="highlight-yellow">60–90 minutes</span> (plus optional Q&A / VIP breakouts).</p>
-                    <p style="margin-top: 15px;"><strong>Dates: <span class="highlight-orange">February 5th - 9th</span></strong></p>
+                    <p style="margin-top: 15px;"><strong>Dates: <span class="highlight-orange">February 2nd - 5th</span></strong></p>
                     <p><strong>Time: <span class="highlight-yellow">Everyday Starting @1PM EST</span></strong></p>
                 </div>
             </div>
