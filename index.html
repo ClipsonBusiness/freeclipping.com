@@ -193,6 +193,22 @@
         .hero-content {
             position: relative;
             z-index: 1;
+            text-align: center;
+        }
+
+        .date-time-banner {
+            background: #FF6B35;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+            font-weight: 700;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto 20px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
         }
 
         .hero h1 {
@@ -948,72 +964,95 @@
         }
 
         .agenda-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .agenda-day {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 35px 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             position: relative;
-            transition: all 0.3s ease;
+            min-height: 500px;
         }
 
-        .agenda-day:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
+        .agenda-day-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .agenda-day-visual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .day-number {
             position: absolute;
-            top: -20px;
-            left: 30px;
-            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
-            color: #ffffff;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            font-size: 12rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .agenda-day:nth-child(odd) .day-number {
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .agenda-day:nth-child(even) .day-number {
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .agenda-day-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .agenda-day h3 {
-            font-size: 1.4rem;
-            margin: 15px 0 18px 0;
-            color: #ffffff;
-            font-weight: 700;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin: 0 0 20px 0;
+            color: #FFD93D;
+            font-weight: 800;
+            line-height: 1.2;
         }
 
-        .agenda-day > p {
-            color: rgba(255, 255, 255, 0.75);
-            margin-bottom: 20px;
-            line-height: 1.6;
+        .agenda-day-content > p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.1rem;
         }
 
-        .agenda-day ul {
+        .agenda-day-content ul {
             list-style: none;
             padding-left: 0;
+            margin-top: 0;
         }
 
-        .agenda-day li {
-            margin: 12px 0;
+        .agenda-day-content li {
+            margin: 15px 0;
             padding-left: 28px;
             position: relative;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
-        .agenda-day li::before {
+        .agenda-day-content li::before {
             content: '•';
             position: absolute;
             left: 0;
@@ -1330,6 +1369,12 @@
                 padding: 0 2px;
             }
 
+            .date-time-banner {
+                font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+                padding: 6px 16px;
+                margin-bottom: 15px;
+            }
+
             .hero h1 {
                 font-size: clamp(1.4rem, 5.5vw, 2.2rem);
                 line-height: 1.1;
@@ -1381,6 +1426,57 @@
             .pricing,
             .faq {
                 padding: 80px 20px;
+            }
+
+            .agenda-grid {
+                gap: 50px;
+            }
+
+            .agenda-day {
+                grid-template-columns: 1fr !important;
+                gap: 30px;
+                min-height: auto;
+            }
+
+            .agenda-day:nth-child(even) {
+                grid-template-columns: 1fr !important;
+            }
+
+            .agenda-day-visual {
+                order: 2;
+            }
+
+            .agenda-day-content {
+                order: 1;
+            }
+
+            .day-number {
+                font-size: 6rem;
+                position: relative;
+                left: auto;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-bottom: 20px;
+            }
+
+            .agenda-day:nth-child(even) .day-number {
+                left: auto;
+                right: auto;
+                top: auto;
+                transform: none;
+            }
+
+            .agenda-day h3 {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .agenda-day-content > p {
+                font-size: 1rem;
+            }
+
+            .agenda-day-content li {
+                font-size: 0.95rem;
             }
 
             .cta-button {
@@ -1506,6 +1602,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="date-time-banner">4PM UK TIME @ FEB 2ND - FEB 5TH</div>
                 <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page<br>in Just <span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>,<br><span class="highlight-step">Step-by-Step</span></h1>
                 <p class="hero-subtitle">Learn how to <span class="highlight-master">master</span> <span class="highlight-clipping">clipping</span></p>
                 
@@ -1729,9 +1826,9 @@
                 </div>
                 <div class="info-card">
                     <h3>WHEN</h3>
-                    <p>Runs for <span class="highlight-orange">4 days</span> in a row. Each session is <span class="highlight-yellow">60–90 minutes</span> (plus optional Q&A / VIP breakouts).</p>
+                    <p>Runs for <span class="highlight-orange">4 days</span> in a row. Each session is <span class="highlight-yellow">45–60 minutes</span> (plus optional Q&A / VIP breakouts).</p>
                     <p style="margin-top: 15px;"><strong>Dates: <span class="highlight-orange">February 2nd - 5th</span></strong></p>
-                    <p><strong>Time: <span class="highlight-yellow">Everyday Starting @1PM EST</span></strong></p>
+                    <p><strong>Time: <span class="highlight-yellow">Everyday Starting @4PM UK TIME</span></strong></p>
                 </div>
             </div>
         </div>
@@ -1744,47 +1841,67 @@
             <div class="agenda-grid">
                 <div class="agenda-day">
                     <div class="day-number">01</div>
-                    <h3>Day 1: The Future of Clipping</h3>
-                    <p>Discover why you're still in the <span class="highlight-orange">0.01%</span> that knows you can <span class="highlight-yellow">get paid for your views</span> — and why this opportunity won't last forever.</p>
-                    <ul>
-                        <li>Why this opportunity <span class="highlight-yellow">won't be available</span> for ordinary people forever</li>
-                        <li>How the <span class="highlight-orange">clippers space</span> is getting bigger by the day</li>
-                        <li>Understanding the <span class="highlight-yellow">increasing competition</span> and why you need to act now</li>
-                        <li>Why you're still early to this <span class="highlight-orange">lucrative opportunity</span></li>
-                    </ul>
+                    <div class="agenda-day-content">
+                        <h3>Day 1: The Future of Clipping</h3>
+                        <p>Discover why you're still in the <span class="highlight-orange">0.01%</span> that knows you can <span class="highlight-yellow">get paid for your views</span> — and why this opportunity won't last forever.</p>
+                        <ul>
+                            <li>Why this opportunity <span class="highlight-yellow">won't be available</span> for ordinary people forever</li>
+                            <li>How the <span class="highlight-orange">clippers space</span> is getting bigger by the day</li>
+                            <li>Understanding the <span class="highlight-yellow">increasing competition</span> and why you need to act now</li>
+                            <li>Why you're still early to this <span class="highlight-orange">lucrative opportunity</span></li>
+                        </ul>
+                    </div>
+                    <div class="agenda-day-visual">
+                        <img src="Agenda day 1.png" alt="Day 1 Visual - Clipping Opportunity" onerror="this.style.display='none'">
+                    </div>
                 </div>
-                <div class="agenda-day">
+                <div class="agenda-day" style="grid-template-columns: 1fr 1fr;">
                     <div class="day-number">02</div>
-                    <h3>Day 2: What Makes a Viral Clip</h3>
-                    <p>Learn why the <span class="highlight-orange">same people make money</span> in every campaign they join, while others join all campaigns but still make <span class="highlight-yellow">$0 cash</span>.</p>
-                    <ul>
-                        <li>What <span class="highlight-yellow">actually makes a clip go viral</span></li>
-                        <li>Why successful clippers <span class="highlight-orange">consistently profit</span> from every campaign</li>
-                        <li>The difference between <span class="highlight-yellow">winners and complainers</span> in clipping</li>
-                        <li>How to avoid being the person who <span class="highlight-orange">blames everyone</span> instead of improving</li>
-                    </ul>
+                    <div class="agenda-day-visual">
+                        <img src="Agenda day 2.png" alt="Day 2 Visual - Viral Clips" onerror="this.style.display='none'">
+                    </div>
+                    <div class="agenda-day-content">
+                        <h3>Day 2: What Makes a Viral Clip</h3>
+                        <p>Learn why the <span class="highlight-orange">same people make money</span> in every campaign they join, while others join all campaigns but still make <span class="highlight-yellow">$0 cash</span>.</p>
+                        <ul>
+                            <li>What <span class="highlight-yellow">actually makes a clip go viral</span></li>
+                            <li>Why successful clippers <span class="highlight-orange">consistently profit</span> from every campaign</li>
+                            <li>The difference between <span class="highlight-yellow">winners and complainers</span> in clipping</li>
+                            <li>How to avoid being the person who <span class="highlight-orange">blames everyone</span> instead of improving</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="agenda-day">
                     <div class="day-number">03</div>
-                    <h3>Day 3: Professional Pages & Algorithm Secrets</h3>
-                    <p>Learn how to set up <span class="highlight-orange">social media pages for success</span> and discover the <span class="highlight-yellow">algorithm secrets</span> that drive 100M+ views a month.</p>
-                    <ul>
-                        <li>Setting up <span class="highlight-yellow">professional social media pages</span> that convert</li>
-                        <li>Mastering <span class="highlight-orange">viral format editing</span> techniques</li>
-                        <li>The <span class="highlight-yellow">best algorithm secrets</span> that drive massive views</li>
-                        <li>How to consistently generate <span class="highlight-orange">100M+ views per month</span></li>
-                    </ul>
+                    <div class="agenda-day-content">
+                        <h3>Day 3: Professional Pages & Algorithm Secrets</h3>
+                        <p>Learn how to set up <span class="highlight-orange">social media pages for success</span> and discover the <span class="highlight-yellow">algorithm secrets</span> that drive 100M+ views a month.</p>
+                        <ul>
+                            <li>Setting up <span class="highlight-yellow">professional social media pages</span> that convert</li>
+                            <li>Mastering <span class="highlight-orange">viral format editing</span> techniques</li>
+                            <li>The <span class="highlight-yellow">best algorithm secrets</span> that drive massive views</li>
+                            <li>How to consistently generate <span class="highlight-orange">100M+ views per month</span></li>
+                        </ul>
+                    </div>
+                    <div class="agenda-day-visual">
+                        <img src="Agenda day 3.png" alt="Day 3 Visual - Professional Pages" onerror="this.style.display='none'">
+                    </div>
                 </div>
-                <div class="agenda-day">
+                <div class="agenda-day" style="grid-template-columns: 1fr 1fr;">
                     <div class="day-number">04</div>
-                    <h3>Day 4: Scale on Autopilot</h3>
-                    <p>Scale yourself out as a clipper to have clips on <span class="highlight-orange">autopilot generating millions of views</span> without you being the editor making the clips.</p>
-                    <ul>
-                        <li>The <span class="highlight-yellow">exact systems</span> that allow scaling multiple pages at once</li>
-                        <li>How to generate <span class="highlight-orange">millions of views</span> without constant editing</li>
-                        <li>Building systems so you're <span class="highlight-yellow">not doing the heavy lifting</span> all the time</li>
-                        <li>Scaling your clipping business <span class="highlight-orange">without being in the field</span> constantly</li>
-                    </ul>
+                    <div class="agenda-day-visual">
+                        <img src="Agenda day 4.png" alt="Day 4 Visual - Scale on Autopilot" onerror="this.style.display='none'">
+                    </div>
+                    <div class="agenda-day-content">
+                        <h3>Day 4: Scale on Autopilot</h3>
+                        <p>Scale yourself out as a clipper to have clips on <span class="highlight-orange">autopilot generating millions of views</span> without you being the editor making the clips.</p>
+                        <ul>
+                            <li>The <span class="highlight-yellow">exact systems</span> that allow scaling multiple pages at once</li>
+                            <li>How to generate <span class="highlight-orange">millions of views</span> without constant editing</li>
+                            <li>Building systems so you're <span class="highlight-yellow">not doing the heavy lifting</span> all the time</li>
+                            <li>Scaling your clipping business <span class="highlight-orange">without being in the field</span> constantly</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1844,7 +1961,7 @@
 
             <div class="faq-item">
                 <div class="faq-question">How much time do I need to commit?</div>
-                <div class="faq-answer">Each live session is 60-90 minutes per day for 4 days. You can also watch replays if you can't make it live. Plus, you'll have access to the community for ongoing support.</div>
+                <div class="faq-answer">Each live session is 45-60 minutes per day for 4 days. You can also watch replays if you can't make it live. Plus, you'll have access to the community for ongoing support.</div>
             </div>
 
             <div class="faq-item">
