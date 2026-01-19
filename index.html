@@ -637,14 +637,113 @@
         .typeform-wrapper {
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow-y: auto;
+            padding: 60px 40px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .typeform-wrapper iframe {
+        .custom-form {
             width: 100%;
-            height: 100%;
+            max-width: 500px;
+        }
+
+        .custom-form h2 {
+            color: #FFD93D;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FFD93D 100%);
             border: none;
-            background: #000000;
+            border-radius: 8px;
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .form-submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #f44336;
+            display: block;
         }
 
         .video-container {
@@ -1538,6 +1637,33 @@
                 font-size: 0.9rem;
             }
 
+            .typeform-wrapper {
+                padding: 40px 20px 30px;
+            }
+
+            .custom-form h2 {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group input {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+
+            .form-submit-btn {
+                padding: 16px;
+                font-size: 1.1rem;
+            }
+
+            .typeform-container {
+                max-height: 95vh;
+            }
+
             .social-proof-container {
                 bottom: 10px;
                 left: 10px;
@@ -1989,7 +2115,23 @@
         <div class="typeform-container">
             <button class="typeform-close" id="close-typeform">&times;</button>
             <div class="typeform-wrapper">
-                <div data-tf-widget="KiSSDChw" data-tf-opacity="100" data-tf-inline-on-mobile data-tf-iframe-props="title=Enter your details to get access" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
+                <form class="custom-form" id="registration-form" action="https://formspree.io/f/meeekkqj" method="POST">
+                    <h2>Enter Your Details</h2>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Gmail</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your Gmail address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <button type="submit" class="form-submit-btn" id="form-submit-btn">Submit & Continue to Checkout</button>
+                    <div class="form-message" id="form-message"></div>
+                </form>
             </div>
         </div>
     </div>
@@ -2189,21 +2331,12 @@
         const typeformTriggerBtn = document.getElementById('typeform-trigger-btn');
         const closeTypeformBtn = document.getElementById('close-typeform');
 
-        // Open Typeform modal when button is clicked
+        // Open form modal when button is clicked
         if (typeformTriggerBtn) {
             typeformTriggerBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 typeformModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                
-                // Ensure Typeform widget loads when modal opens
-                setTimeout(function() {
-                    const widgetContainer = document.querySelector('[data-tf-widget="KiSSDChw"]');
-                    if (widgetContainer && window.tf && !widgetContainer.querySelector('iframe')) {
-                        // Widget might not have loaded, trigger it
-                        window.tf.load();
-                    }
-                }, 100);
             });
         }
 
@@ -2225,86 +2358,52 @@
             });
         }
 
-        // Listen for Typeform submission and redirect to Stripe
-        window.addEventListener('message', function(event) {
-            // Typeform sends completion events from the iframe
-            const stripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
-            
-            // Listen for postMessage from Typeform iframe
-            if (event.origin === 'https://form.typeform.com' || event.origin === 'https://admin.typeform.com' || event.origin.includes('typeform.com')) {
-                if (event.data) {
-                    // Check various Typeform completion event formats
-                    if (event.data.type === 'form-submit' || 
-                        event.data.type === 'form-complete' || 
-                        event.data.type === 'TF_FORM_SUBMIT' ||
-                        (typeof event.data === 'string' && (event.data.includes('form-complete') || event.data.includes('form-submit')))) {
-                        // Redirect to Stripe checkout after form submission
-                        setTimeout(function() {
-                            window.location.href = stripeUrl;
-                        }, 1500);
-                        return;
-                    }
-                }
-            }
-            
-            // Also check for string-based messages
-            if (event.data && typeof event.data === 'string') {
-                try {
-                    const data = JSON.parse(event.data);
-                    if (data.type === 'form-submit' || data.type === 'form-complete' || data.type === 'TF_FORM_SUBMIT') {
-                        setTimeout(function() {
-                            window.location.href = stripeUrl;
-                        }, 1500);
-                        return;
-                    }
-                } catch (e) {
-                    // Check for Typeform completion in string format
-                    if (event.data.includes('form-complete') || event.data.includes('TF_FORM_SUBMIT') || event.data.includes('form-submit')) {
-                        setTimeout(function() {
-                            window.location.href = stripeUrl;
-                        }, 1500);
-                        return;
-                    }
-                }
-            }
-        });
+        // Handle custom form submission
+        const registrationForm = document.getElementById('registration-form');
+        const formMessage = document.getElementById('form-message');
+        const formSubmitBtn = document.getElementById('form-submit-btn');
+        const stripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
 
-    </script>
-    <!-- Typeform Embed Script -->
-    <script src="https://embed.typeform.com/next/embed.js"></script>
-    <script>
-        // Typeform completion handler - wait for script to load
-        (function() {
-            const correctStripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
-            
-            function initTypeform() {
-                if (window.tf) {
-                    // Typeform is loaded, set up completion listener
-                    window.addEventListener('message', function(event) {
-                        // Listen for Typeform completion events
-                        if (event.data && (
-                            event.data.type === 'form-submit' || 
-                            event.data.type === 'form-complete' ||
-                            (typeof event.data === 'string' && event.data.includes('form-complete'))
-                        )) {
-                            setTimeout(function() {
-                                window.location.href = correctStripeUrl;
-                            }, 1500);
-                        }
-                    });
-                } else {
-                    // Retry if Typeform not loaded yet
-                    setTimeout(initTypeform, 500);
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form fields
+                const fullname = document.getElementById('fullname').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                
+                if (!fullname || !email || !phone) {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = 'Please fill in all fields.';
+                    formMessage.style.display = 'block';
+                    return;
                 }
-            }
-            
-            // Start initialization
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initTypeform);
-            } else {
-                initTypeform();
-            }
-        })();
+                
+                // Disable submit button
+                formSubmitBtn.disabled = true;
+                formSubmitBtn.textContent = 'Redirecting...';
+                
+                // Get form data
+                const formData = new FormData(registrationForm);
+                
+                // Submit to Formspree (don't wait for response - fire and forget)
+                fetch('https://formspree.io/f/meeekkqj', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).catch(function(error) {
+                    // Silently handle errors - we're redirecting anyway
+                    console.log('Form submission error (non-blocking):', error);
+                });
+                
+                // Immediately redirect to Stripe checkout
+                window.location.href = stripeUrl;
+            });
+        }
+
     </script>
 </body>
 </html>
