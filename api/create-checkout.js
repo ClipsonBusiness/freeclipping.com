@@ -28,7 +28,7 @@ async function handler(req, res) {
       mode: 'payment',
       line_items: [
         {
-          price: 'price_1SxA7ELDafoVnYnRP2cB1iLA',
+          price: 'price_1SpTLeLDafoVnYnRIRqREx1P',
           quantity: 1
         }
       ],
