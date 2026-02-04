@@ -2343,11 +2343,19 @@
             });
         });
 
-        // Buy button: create checkout and redirect
+        // Buy button: create Stripe Checkout Session and redirect (affiliate tracked via ca_affiliate_id cookie)
         async function startCheckout() {
-          const res = await fetch('/api/create-checkout', { method: 'POST', credentials: 'same-origin' });
-          const data = await res.json();
-          window.location.href = data.url;
+          try {
+            const res = await fetch('/api/create-checkout', { method: 'POST', credentials: 'same-origin' });
+            const data = await res.json();
+            if (res.ok && data.url) {
+              window.location.href = data.url;
+              return;
+            }
+            alert(data.error || 'Checkout failed. Please try again.');
+          } catch (err) {
+            alert('Checkout failed. Please try again.');
+          }
         }
 
         const typeformModal = document.getElementById('typeform-modal');
@@ -2380,17 +2388,15 @@
             });
         }
 
-        // Handle custom form submission
+        // Handle custom form submission (form also uses Checkout Sessions via API)
         const registrationForm = document.getElementById('registration-form');
         const formMessage = document.getElementById('form-message');
         const formSubmitBtn = document.getElementById('form-submit-btn');
-        const stripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
 
         if (registrationForm) {
             registrationForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Validate form fields
                 const fullname = document.getElementById('fullname').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const phone = document.getElementById('phone').value.trim();
@@ -2405,7 +2411,7 @@
                 formSubmitBtn.disabled = true;
                 formSubmitBtn.textContent = 'Redirecting...';
                 
-                // Submit to Formspree (fire and forget)
+                // Formspree (fire and forget)
                 const formData = new FormData(registrationForm);
                 fetch('https://formspree.io/f/meeekkqj', {
                     method: 'POST',
@@ -2413,20 +2419,27 @@
                     headers: { 'Accept': 'application/json' }
                 }).catch(function() {});
                 
-                // Try API first (sends ca_affiliate_id cookie for attribution), then fallback to direct link
+                // Checkout via API (Stripe Checkout Sessions, affiliate tracked)
                 try {
                     const res = await fetch('/api/create-checkout', {
                         method: 'POST',
-                        credentials: 'same-origin',
-                        headers: { 'Content-Type': 'application/json' }
+                        credentials: 'same-origin'
                     });
                     const data = await res.json();
                     if (res.ok && data.url) {
                         window.location.href = data.url;
                         return;
                     }
-                } catch (err) {}
-                window.location.href = stripeUrl;
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = data.error || 'Checkout failed. Please try again.';
+                    formMessage.style.display = 'block';
+                } catch (err) {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = 'Checkout failed. Please try again.';
+                    formMessage.style.display = 'block';
+                }
+                formSubmitBtn.disabled = false;
+                formSubmitBtn.textContent = 'Submit & Continue to Checkout';
             });
         }
 

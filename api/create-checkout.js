@@ -1,7 +1,9 @@
 const Stripe = require('stripe');
 
+// Stripe Checkout Sessions only (no Payment Links). Use existing price.
+const STRIPE_PRICE_ID = 'price_1SxA7ELDafoVnYnRP2cB1iLA';
+
 module.exports = async function handler(req, res) {
-  // Allow CORS for your domain
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -13,24 +15,24 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   if (!process.env.STRIPE_SECRET_KEY) {
     return res.status(500).json({ error: 'STRIPE_SECRET_KEY is not set' });
   }
 
-  // 1. Read affiliate cookie
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+  // Read affiliate cookie from request
   const cookie = req.headers.cookie
     ?.split('; ')
     .find(row => row.startsWith('ca_affiliate_id='));
   const affiliateId = cookie ? decodeURIComponent(cookie.split('=')[1]) : '';
 
   try {
-    // 2. Create Stripe checkout WITH affiliate ID
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID || 'price_XXXX', // Set STRIPE_PRICE_ID in Vercel (same price as your Payment Link)
+          price: STRIPE_PRICE_ID,
           quantity: 1
         }
       ],
@@ -41,7 +43,7 @@ module.exports = async function handler(req, res) {
       }
     });
 
-    // 3. Send checkout URL back to browser
+    // Return session URL as JSON
     res.status(200).json({ url: session.url });
   } catch (err) {
     console.error(err);
