@@ -4,22 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clipping Bootcamp - Make Your First Profitable Clipping Page in 4 Days</title>
-    <link rel="icon" type="image/jpeg" href="ClipSon.jpg">
-    <link rel="shortcut icon" type="image/jpeg" href="ClipSon.jpg">
-    <link rel="apple-touch-icon" href="ClipSon.jpg">
+    <link rel="icon" type="image/jpeg" href="Favicon.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="Favicon.jpg">
+    <link rel="apple-touch-icon" href="Favicon.jpg">
     <!-- Clipson Affiliate Tracking (Cookie-Based - Stripe Compatible) -->
     <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search);
-      const ref = params.get('ref');
-      if (!ref) return;
+    (function() {
+      // Only run on the client's domain
+      const hostname = window.location.hostname;
+      const domainMatch = hostname === 'www.freeclipping.com' || hostname === 'www.www.freeclipping.com';
+      if (!domainMatch) return;
 
-      document.cookie =
-        'ca_affiliate_id=' + encodeURIComponent(ref) +
+      // Check for ?ref= parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const refParam = urlParams.get('ref');
+
+      if (!refParam) return;
+
+      // Set cookie on client's domain (90 days expiry)
+      // This cookie will be available when user reaches Stripe checkout
+      const expiryDays = 90;
+      const expiryDate = new Date();
+      expiryDate.setTime(expiryDate.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+      document.cookie = 'link_slug=' + encodeURIComponent(refParam) +
+        '; expires=' + expiryDate.toUTCString() +
         '; path=/' +
-        '; max-age=7776000' +
         '; SameSite=Lax' +
         (location.protocol === 'https:' ? '; Secure' : '');
+
+      // Optionally record click on tracking server (non-blocking)
+      // This helps with analytics but isn't required for attribution
+      try {
+        navigator.sendBeacon('https://clipsonaffiliates.com/track?ref=' + encodeURIComponent(refParam) + '&beacon=true');
+      } catch(e) {
+        // Fallback if sendBeacon not supported
+        fetch('https://clipsonaffiliates.com/track?ref=' + encodeURIComponent(refParam) + '&beacon=true', { method: 'GET', keepalive: true }).catch(() => {});
+      }
     })();
     </script>
     <style>
@@ -244,6 +264,11 @@
             display: block;
             content: "";
             margin: 0;
+        }
+
+        .hero h1 .highlight-first-word {
+            color: #22c55e;
+            font-weight: 900;
         }
 
         .hero h1 .highlight-first {
@@ -1508,6 +1533,7 @@
                 line-height: 1.1;
             }
 
+            .hero h1 .highlight-first-word,
             .hero h1 .highlight-first,
             .hero h1 .highlight-days,
             .hero h1 .highlight-live,
@@ -1713,7 +1739,7 @@
     <div class="top-header">
         <div class="top-header-content">
             <div class="logo-container">
-                <img src="ClipSon.jpg" alt="ClipSon Logo" class="logo">
+                <img src="Favicon.jpg" alt="ClipSon Logo" class="logo">
             </div>
             <div class="header-countdown-wrapper">
                 <div class="early-bird-header">Early Bird Pricing Ends Soon</div>
@@ -1747,7 +1773,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="date-time-banner">4PM UK TIME @ FEB 2ND - FEB 5TH</div>
-                <h1>I'll Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page<br>in Just <span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>,<br><span class="highlight-step">Step-by-Step</span></h1>
+                <h1><span class="highlight-first-word">I'll</span> Show You How to Make Your<br><span class="highlight-first">FIRST</span> Profitable Clipping Page<br>in Just <span class="highlight-days">4 Days</span> — <span class="highlight-live">LIVE</span>,<br><span class="highlight-step">Step-by-Step</span></h1>
                 <p class="hero-subtitle">Learn how to <span class="highlight-master">master</span> <span class="highlight-clipping">clipping</span></p>
                 
                 <div class="video-container">
