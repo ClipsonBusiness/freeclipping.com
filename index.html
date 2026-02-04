@@ -2343,18 +2343,22 @@
             });
         });
 
-        // Typeform Modal Handling
-        const stripeCheckoutUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
+        // Buy button: create checkout and redirect
+        async function startCheckout() {
+          const res = await fetch('/api/create-checkout', { method: 'POST', credentials: 'same-origin' });
+          const data = await res.json();
+          window.location.href = data.url;
+        }
+
         const typeformModal = document.getElementById('typeform-modal');
         const typeformTriggerBtn = document.getElementById('typeform-trigger-btn');
         const closeTypeformBtn = document.getElementById('close-typeform');
 
-        // Open form modal when button is clicked
+        // Buy button: start checkout
         if (typeformTriggerBtn) {
             typeformTriggerBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                typeformModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                startCheckout();
             });
         }
 
@@ -2383,7 +2387,7 @@
         const stripeUrl = 'https://buy.stripe.com/8x28wQ99S4dW5nP6s35gc0e';
 
         if (registrationForm) {
-            registrationForm.addEventListener('submit', function(e) {
+            registrationForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Validate form fields
@@ -2398,26 +2402,30 @@
                     return;
                 }
                 
-                // Disable submit button
                 formSubmitBtn.disabled = true;
                 formSubmitBtn.textContent = 'Redirecting...';
                 
-                // Get form data
+                // Submit to Formspree (fire and forget)
                 const formData = new FormData(registrationForm);
-                
-                // Submit to Formspree (don't wait for response - fire and forget)
                 fetch('https://formspree.io/f/meeekkqj', {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).catch(function(error) {
-                    // Silently handle errors - we're redirecting anyway
-                    console.log('Form submission error (non-blocking):', error);
-                });
+                    headers: { 'Accept': 'application/json' }
+                }).catch(function() {});
                 
-                // Immediately redirect to Stripe checkout
+                // Try API first (sends ca_affiliate_id cookie for attribution), then fallback to direct link
+                try {
+                    const res = await fetch('/api/create-checkout', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.url) {
+                        window.location.href = data.url;
+                        return;
+                    }
+                } catch (err) {}
                 window.location.href = stripeUrl;
             });
         }

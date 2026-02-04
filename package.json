@@ -1,0 +1,9 @@
+{
+  "name": "funnel-bootcamp",
+  "version": "1.0.0",
+  "description": "Clipping Bootcamp funnel with Stripe checkout API",
+  "main": "index.html",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
